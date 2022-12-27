@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon --exec babel-node index"
+    "serve": "nodemon --exec babel-node index",
+    "pkg": "pkg . --out-path dist",
+    "build": "concurrently \"webpack -w \" \"pkg . --out-path dist\""
   },
   "keywords": [],
   "author": "",
@@ -15,9 +17,20 @@
     "@babel/node": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
     "babel-plugin-module-resolver": "^4.1.0",
-    "eslint": "^8.29.0"
+    "eslint": "^8.29.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "express": "^4.18.2"
-  }
+    "express": "^4.18.2",
+    "pkg": "^5.8.0"
+  },
+  "pkg": {
+    "scripts": [],
+    "targets": [
+      "node14-macos-arm64"
+    ],
+    "assets": []
+  },
+  "bin": "./build/bundle.js"
 }

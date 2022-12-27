@@ -6,6 +6,6 @@ import fs from "fs";
 // let rawdata = fs.readFileSync(configFileName);
 // const config = JSON.parse(rawdata);
 
-import config from "src/config/config.json";
+import config from "config/config.json";
 
 export { config };
