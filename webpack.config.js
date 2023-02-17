@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   // entry : 번들링할 기본 js파일들 지정
@@ -30,4 +31,11 @@ module.exports = {
     modules: [path.resolve(__dirname, "src"), "node_modules", "./"],
   },
   mode: "none",
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: "config", to: "config" }, //to the dist root directory
+      ],
+    }),
+  ],
 };
