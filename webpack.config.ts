@@ -3,7 +3,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   // entry : 번들링할 기본 js파일들 지정
-  entry: ["./src/index.js"],
+  entry: ["./src/index.ts"],
   target: "node",
   // output : 번들 결과 출력위치 지정
   output: {
@@ -13,29 +13,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        include: [path.resolve(__dirname, "src/js")],
+        test: /\.tsx?$/,
+        use: "ts-loader",
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-proposal-class-properties"],
-          },
-        },
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".json", "..."],
+    extensions: [".js", ".json", "...", ".ts"],
     modules: [path.resolve(__dirname, "src"), "node_modules", "./"],
   },
   mode: "none",
-  plugins: [
-    new CopyPlugin({
-      patterns: [
-        { from: "config", to: "config" }, //to the dist root directory
-      ],
-    }),
-  ],
+  externals: {
+    express: "express",
+  },
 };
