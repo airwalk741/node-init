@@ -1,5 +1,6 @@
 import { config } from "src/ts/config";
 import { Sequelize } from "sequelize";
+import mysql2 from "mysql2";
 
 const {
   database: { username, password, database, host, dialect, port, pool },
@@ -16,6 +17,7 @@ const sequelize = new Sequelize(database, username, password, {
   },
   logging: false,
   timezone: "+09:00",
+  dialectModule: mysql2,
 });
 
 const db = {

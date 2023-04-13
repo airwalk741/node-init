@@ -1,5 +1,4 @@
 const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   // entry : 번들링할 기본 js파일들 지정
@@ -25,6 +24,9 @@ module.exports = {
   },
   mode: "none",
   externals: {
-    express: "express",
+    express: "require('express')",
+    winston: 'require("winston")',
+    "pg-hstore": "pg-hstore",
+    axios: 'require("axios")',
   },
 };
