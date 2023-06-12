@@ -1,10 +1,16 @@
 import fs from "fs";
 import path from "path";
+import os from "os";
 
 let config;
 
 if (process.env.NODE_ENV !== "develop") {
-  const serverPath = process.execPath.split("/");
+  let serverPath = process.execPath.split("/");
+
+  if (os.type().includes("Windows")) {
+    serverPath = process.execPath.split("\\");
+  }
+
   serverPath.pop();
   const configFileName = serverPath.join("/") + "/config/config.json";
   let rawdata = fs.readFileSync(configFileName);
