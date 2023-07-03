@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import fs from "fs";
 import https from "https";
 import cors from "cors";
-import { config } from "src/js/config";
+import { config } from "src/utils/config";
 import db from "src//models";
 import autoDB from "./models/orm";
 import Routes from "src/routes/index";
@@ -20,6 +20,11 @@ const HTTP_PORT = port;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.set("views", "src/views");
+app.set("view engine", "ejs");
+
+app.use(express.static(__dirname));
 
 app.use(cors());
 Routes(app);

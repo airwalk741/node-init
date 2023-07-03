@@ -1,4 +1,4 @@
-import { config } from "src/js/config";
+import { config } from "src/utils/config";
 import { SequelizeAuto } from "sequelize-auto";
 
 const {

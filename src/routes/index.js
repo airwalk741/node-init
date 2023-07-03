@@ -1,5 +1,7 @@
-import TestRoute from "src/routes/modules/index";
+import RenderRouter from "src/routes/renders/index";
+import APIRouter from "src/routes/apis/index";
 
 export default (app) => {
-  TestRoute(app);
+  RenderRouter(app);
+  APIRouter(app);
 };
