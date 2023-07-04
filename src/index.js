@@ -9,6 +9,7 @@ import autoDB from "./models/orm";
 import Routes from "src/routes/index";
 import { logger } from "./middlewares/winston";
 import { results } from "src/utils/index";
+import path from "path";
 
 const app = express();
 
@@ -21,7 +22,7 @@ const HTTP_PORT = port;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set("views", "src/views");
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(express.static(__dirname));
@@ -32,8 +33,14 @@ Routes(app);
 app.listen(HTTP_PORT, () => {
   // logger.info(`Server listening on port ${HTTP_PORT}`);
   console.log(`server is listening at \n-> \thttp://localhost:${port}`);
-  if (Object.keys(results).length !== 0) {
-    console.log(`-> \thttp://${results["en0"][0]}:${port}`);
+  try {
+    if (Object.keys(results).length !== 0) {
+      for (let key of Object.keys(results)) {
+        console.log(`-> \thttp://${results[key][0]}:${port}`);
+      }
+    }
+  } catch (e) {
+    console.log(e);
   }
 });
 

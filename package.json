@@ -8,7 +8,7 @@
     "serve": "NODE_ENV=develop nodemon --exec babel-node ./src/index",
     "dev": "npx tailwindcss -i ./src/assets/css/index.css -o ./src/assets/css/tailwind.css --watch",
     "pkg": "pkg . --out-path dist",
-    "build": "webpack -w"
+    "build": "webpack && pkg . --out-path dist"
   },
   "keywords": [],
   "author": "",
@@ -45,7 +45,11 @@
       "node14-macos-arm64"
     ],
     "assets": [
-      "config/*"
+      "config/*",
+      "config/*",
+      "build/views/**/*",
+      "build/assets/**/*",
+      "src/**/*"
     ]
   },
   "bin": "./build/bundle.js"

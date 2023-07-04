@@ -35,6 +35,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "config", to: "config" }, //to the dist root directory
+        { from: "src/views", to: "views" },
+        { from: "src/assets", to: "assets" },
       ],
     }),
   ],
