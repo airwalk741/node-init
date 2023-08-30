@@ -1,6 +1,8 @@
-import { config } from "src/ts/config";
+import { returnConfig } from "src/utils/config";
 import { Sequelize } from "sequelize";
 import mysql2 from "mysql2";
+
+const config = returnConfig();
 
 const {
   database: { username, password, database, host, dialect, port, pool },

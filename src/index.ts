@@ -3,13 +3,15 @@ import bodyParser from "body-parser";
 import fs from "fs";
 import https from "https";
 import cors from "cors";
-import { config } from "src/ts/config";
+import { returnConfig } from "src/utils/config";
 import db from "src//models";
 import autoDB from "./models/orm";
 import Routes from "src/routes/index";
 import { logger } from "./middlewares/winston";
 
 const app = express();
+
+const config = returnConfig();
 
 const {
   node: { port },
