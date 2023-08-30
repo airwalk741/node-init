@@ -4,6 +4,8 @@ import os from "os";
 
 let config;
 
+let configFileName;
+
 if (process.env.NODE_ENV !== "develop") {
   let serverPath = process.execPath.split("/");
 
@@ -12,11 +14,12 @@ if (process.env.NODE_ENV !== "develop") {
   }
 
   serverPath.pop();
-  const configFileName = serverPath.join("/") + "/config/config.json";
-  let rawdata = fs.readFileSync(configFileName);
-  config = JSON.parse(rawdata);
+  configFileName = serverPath.join("/") + "/config/config.json";
 } else {
-  config = require(path.join(process.cwd(), "/config/config.json"));
+  configFileName = path.join(process.cwd(), "/config/config.json");
 }
+
+let rawdata = fs.readFileSync(configFileName);
+config = JSON.parse(rawdata);
 
 export { config };
