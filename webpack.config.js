@@ -37,7 +37,17 @@ module.exports = {
         { from: "config", to: "config" }, //to the dist root directory
         { from: "src/views", to: "views" },
         { from: "src/assets", to: "assets" },
+        { from: "src/ui", to: "ui" },
       ],
     }),
   ],
+  externals: {
+    express: "require('express')",
+    winston: 'require("winston")',
+    // mysql2: 'require("mysql2")',
+    sequelize: 'require("sequelize")',
+    "pg-hstore": "pg-hstore",
+    axios: 'require("axios")',
+    "utf-8-validate": "utf-8-validate",
+  },
 };
