@@ -5,9 +5,9 @@ import https from "https";
 import cors from "cors";
 import { config } from "src/utils/config";
 import db from "src//models";
-import autoDB from "./models/orm";
+import autoDB from "src/models/orm";
 import Routes from "src/routes/index";
-import { logger } from "./middlewares/winston";
+import { logger } from "src/middlewares/winston";
 import { results } from "src/utils/index";
 import path from "path";
 
@@ -22,7 +22,7 @@ const HTTP_PORT = port;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "src", "views"));
 app.set("view engine", "ejs");
 
 app.use(express.static(__dirname));

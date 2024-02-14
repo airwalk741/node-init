@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "NODE_ENV=develop nodemon --exec babel-node ./src/index",
+    "serve": "NODE_ENV=develop nodemon --exec babel-node ./index",
     "dev": "npx tailwindcss -i ./src/assets/css/index.css -o ./src/assets/css/tailwind.css --watch",
     "pkg": "pkg . --out-path dist",
     "build": "webpack && pkg . --out-path dist"
